@@ -58,6 +58,6 @@ main = do
   case inputs of
     Just parsed -> print $ foldl f (0, True) (rights parsed)
       where
-        f (x, _) (Do d)  = (x, d)
-        f (y, shouldDo) (Mul x)  = if shouldDo then (x + y, shouldDo) else (y, shouldDo)
+        f (x, _) (Do d) = (x, d)
+        f (y, shouldDo) (Mul x) = if shouldDo then (x + y, shouldDo) else (y, shouldDo)
     _ -> return ()

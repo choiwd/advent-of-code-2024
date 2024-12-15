@@ -15,10 +15,11 @@ middleElement = listToMaybe . shave
     shave [x] = [x]
     shave [] = []
 
--- Requires that index(a) < index(b) 
-swapElements :: Eq a => a -> a -> [a] -> [a]
-swapElements a b l =  l2
-  where (start_b, end_b) = span (/= b) l
-        l1 = start_b ++ [a] ++ tail end_b
-        (start_a, end_a) = span (/= a) l1
-        l2 = start_a ++ [b] ++ tail end_a
+-- Requires that index(a) < index(b)
+swapElements :: (Eq a) => a -> a -> [a] -> [a]
+swapElements a b l = l2
+  where
+    (start_b, end_b) = span (/= b) l
+    l1 = start_b ++ [a] ++ tail end_b
+    (start_a, end_a) = span (/= a) l1
+    l2 = start_a ++ [b] ++ tail end_a

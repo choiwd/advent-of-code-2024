@@ -73,7 +73,7 @@ validRules rules = filter (allRulesValid rules)
 notValidRules :: [OrderRule] -> [Update] -> [Update]
 notValidRules rules = filter (not . allRulesValid rules)
 
--- Requires that index(a) < index(b) 
+-- Requires that index(a) < index(b)
 swapElements_ :: (Eq a) => a -> a -> [a] -> [a]
 swapElements_ a b l = l2
   where

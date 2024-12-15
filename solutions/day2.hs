@@ -1,9 +1,9 @@
 module Main where
 
+import Data.List.HT
 import Data.Maybe (mapMaybe)
 import Data.Void
 import Debug.Trace
-import Data.List.HT
 import Text.Megaparsec
   ( Parsec,
     many,
@@ -32,7 +32,6 @@ parser = many tries
 rotateList :: Int -> [a] -> [a]
 rotateList _ [] = []
 rotateList n x = zipWith const (drop n (cycle x)) x
-
 
 isDecreasingByOneOrTwoOrThree :: [Int] -> Bool
 isDecreasingByOneOrTwoOrThree l = all (\x -> 0 < x && x <= 3) (init (zipWith (-) l l2))

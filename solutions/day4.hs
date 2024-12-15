@@ -44,23 +44,23 @@ countTotal l = sum (listOfFunctions <*> [l])
   where
     listOfFunctions = [countHorizontal, countVertical, countDiagonal] <*> [xmas, samx]
 
-
 merge3Consecutive :: [[a]] -> [[a]]
-merge3Consecutive (x:xs:xss:xsss) = (x ++ xs ++ xss):merge3Consecutive xsss
+merge3Consecutive (x : xs : xss : xsss) = (x ++ xs ++ xss) : merge3Consecutive xsss
 -- merge3Consecutive (x:xs:xss) = (x ++ xs):merge3Consecutive xss
 -- merge3Consecutive (x:xs) = x:merge3Consecutive xs
 merge3Consecutive _ = []
 
 convolution :: String -> [String] -> Int
 convolution mask strings = length $ filter maskCompare (filter (\x -> length x == 9) listOfGroupsOf9)
-  where l = map (groupWithNextN 3 . transpose) (groupWithNextN 3 strings)
-        listOfGroupsOf9 = merge3Consecutive . concat $ concat l
-        maskCompare x = and $ zipWith f mask x
-          where
-            f a b
-              | a == '_' = True
-              | b == '_' = True
-              | otherwise = a == b
+  where
+    l = map (groupWithNextN 3 . transpose) (groupWithNextN 3 strings)
+    listOfGroupsOf9 = merge3Consecutive . concat $ concat l
+    maskCompare x = and $ zipWith f mask x
+      where
+        f a b
+          | a == '_' = True
+          | b == '_' = True
+          | otherwise = a == b
 
 main :: IO ()
 main = do
